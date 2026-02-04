@@ -2,6 +2,9 @@
 
 Cross-platform WebDriver server for Tauri applications.
 
+> Fork of the [official tauri-driver](https://github.com/tauri-apps/tauri/tree/dev/crates/tauri-driver)
+> with added macOS support via WebDriverAgentMac.
+
 This is a [WebDriver Intermediary Node] that wraps the native WebDriver server
 for platforms that [Tauri] supports. Your WebDriver client will connect to the
 running `tauri-driver` server, and `tauri-driver` will handle starting the
