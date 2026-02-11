@@ -1,15 +1,12 @@
-# `tauri-driver` _(pre-alpha)_
+# `tauri-webdriver`
 
 Cross-platform WebDriver server for Tauri applications.
 
-> Fork of the [official tauri-driver](https://github.com/tauri-apps/tauri/tree/dev/crates/tauri-driver)
-> with added macOS, Windows, and Linux support via [tauri-plugin-webdriver].
-
-This is a [WebDriver Intermediary Node] that wraps the native WebDriver server
-for platforms that [Tauri] supports. Your WebDriver client will connect to the
-running `tauri-driver` server, and `tauri-driver` will handle starting the
-native WebDriver server for you behind the scenes. It requires two separate
-ports to be used since two distinct [WebDriver Remote Ends] run.
+This is a [WebDriver Intermediary Node] that works with [tauri-plugin-webdriver]
+to provide WebDriver automation for [Tauri] apps on macOS, Windows, and Linux.
+Your WebDriver client connects to `tauri-webdriver`, which launches your Tauri
+app and proxies requests to the embedded plugin. It requires two separate ports
+since two distinct [WebDriver Remote Ends] run.
 
 ## Supported Platforms
 
@@ -22,18 +19,18 @@ ports to be used since two distinct [WebDriver Remote Ends] run.
 ## Installation
 
 ```sh
-cargo install tauri-driver --locked
+cargo install tauri-webdriver --locked
 ```
 
 ## Command Line Options
 
-- `--port` (default: `4444`) - Port for tauri-driver to listen on
+- `--port` (default: `4444`) - Port for tauri-webdriver to listen on
 - `--native-port` (default: `4445`) - Port of the plugin WebDriver
 - `--native-host` (default: `127.0.0.1`) - Host of the plugin WebDriver
 
 ## Setup
 
-On all platforms, `tauri-driver` works with [tauri-plugin-webdriver], which
+On all platforms, `tauri-webdriver` works with [tauri-plugin-webdriver], which
 embeds a W3C WebDriver server directly inside your Tauri application. This provides
 native WebView control (WKWebView on macOS, WebView2 on Windows, WebKitGTK on Linux)
 without external dependencies.
@@ -62,10 +59,10 @@ cargo tauri build
 
 ### 3. Run Tests
 
-Start `tauri-driver`:
+Start `tauri-webdriver`:
 
 ```sh
-tauri-driver
+tauri-webdriver
 ```
 
 Configure your WebDriver client to connect to `localhost:4444` with
@@ -106,7 +103,7 @@ Configure your WebDriver client to connect to `localhost:4444` with
 }
 ```
 
-When a session is created, `tauri-driver` will:
+When a session is created, `tauri-webdriver` will:
 1. Launch your Tauri app with WebDriver automation enabled
 2. Wait for the plugin's HTTP server to be ready
 3. Proxy all WebDriver requests to the plugin
@@ -154,3 +151,4 @@ https://tauri.app/develop/tests/webdriver/
 [WebDriver Remote Ends]: https://www.w3.org/TR/webdriver/#dfn-remote-ends
 [tauri-plugin-webdriver]: https://github.com/Choochmeque/tauri-plugin-webdriver
 [Tauri]: https://github.com/tauri-apps/tauri
+[tauri-webdriver]: https://github.com/Choochmeque/tauri-webdriver

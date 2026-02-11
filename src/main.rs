@@ -1,10 +1,6 @@
-// Copyright 2019-2024 Tauri Programme within The Commons Conservancy
-// SPDX-License-Identifier: Apache-2.0
-// SPDX-License-Identifier: MIT
-
 //! Cross-platform WebDriver server for Tauri applications.
 //!
-//! This is a [WebDriver Intermediary Node](https://www.w3.org/TR/webdriver/#dfn-intermediary-nodes) that wraps the native WebDriver server for platforms that [Tauri](https://github.com/tauri-apps/tauri) supports. Your WebDriver client will connect to the running `tauri-driver` server, and `tauri-driver` will handle starting the native WebDriver server for you behind the scenes. It requires two separate ports to be used since two distinct [WebDriver Remote Ends](https://www.w3.org/TR/webdriver/#dfn-remote-ends) run.
+//! This is a [WebDriver Intermediary Node](https://www.w3.org/TR/webdriver/#dfn-intermediary-nodes) that works with [tauri-plugin-webdriver](https://github.com/Choochmeque/tauri-plugin-webdriver) to provide WebDriver automation for [Tauri](https://github.com/tauri-apps/tauri) apps. Your WebDriver client connects to `tauri-webdriver`, which launches your Tauri app and proxies requests to the embedded plugin. It requires two separate ports since two distinct [WebDriver Remote Ends](https://www.w3.org/TR/webdriver/#dfn-remote-ends) run.
 
 #![doc(
     html_logo_url = "https://github.com/tauri-apps/tauri/raw/dev/.github/icon.png",
@@ -18,7 +14,7 @@ mod server;
 
 #[cfg(not(any(target_os = "linux", target_os = "macos", windows)))]
 fn main() {
-    println!("tauri-driver is not supported on this platform");
+    println!("tauri-webdriver is not supported on this platform");
     std::process::exit(1);
 }
 

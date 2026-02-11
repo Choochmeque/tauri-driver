@@ -1,13 +1,9 @@
-// Copyright 2019-2024 Tauri Programme within The Commons Conservancy
-// SPDX-License-Identifier: Apache-2.0
-// SPDX-License-Identifier: MIT
-
 const HELP: &str = "\
-USAGE: tauri-driver [OPTIONS]
+USAGE: tauri-webdriver [OPTIONS]
 
 OPTIONS:
   -h, --help              Prints help information
-  --port NUMBER           Sets the tauri-driver intermediary port (default: 4444)
+  --port NUMBER           Sets the tauri-webdriver intermediary port (default: 4444)
   --native-port NUMBER    Sets the port of the plugin WebDriver (default: 4445)
   --native-host HOST      Sets the host of the plugin WebDriver (default: 127.0.0.1)
 
